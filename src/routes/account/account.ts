@@ -5,17 +5,37 @@ import {
   addAccount,
   removeAccount,
   changePassword,
+  reassignPassword,
 } from "./middlewares";
-import { verifyJWT, sendJWT, createJWT, verifyCredentials } from "@middlewares";
+import {
+  verifyJWT,
+  sendJWT,
+  createJWT,
+  verifyCredentials,
+  hashPassword,
+} from "@middlewares";
 
 const account = Router();
 
-account.post("/", checkAccountDoublon, addAccount, createJWT, sendJWT);
+account.post(
+  "/",
+  checkAccountDoublon,
+  hashPassword,
+  addAccount,
+  createJWT,
+  sendJWT
+);
 
 account.patch("/", verifyJWT, confirmAccount);
 
-account.patch("/password", verifyCredentials, changePassword);
+account.patch(
+  "/password",
+  verifyCredentials,
+  reassignPassword,
+  hashPassword,
+  changePassword
+);
 
-account.delete("/", verifyCredentials, removeAccount);
+account.delete("/", hashPassword, verifyCredentials, removeAccount);
 
 export { account };

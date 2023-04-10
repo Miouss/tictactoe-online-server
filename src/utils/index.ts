@@ -1,7 +1,8 @@
-// common
+// auth
 export * from "./auth/decodeJWT";
 export * from "./auth/refreshJWT";
 export * from "./auth/getJWT";
+export * from "./auth/comparePasswords";
 
 // tests
 export * from "./tests/resolveWhenSignalEmitted";

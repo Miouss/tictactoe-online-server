@@ -13,9 +13,9 @@ export class AccountNotFoundError extends ErrorWithStatus {
   }
 }
 
-export class CredentialsIncorrectError extends ErrorWithStatus {
+export class PasswordIncorrectError extends ErrorWithStatus {
   constructor() {
-    super(404, "Credentials incorrect");
+    super(404, "Password incorrect");
   }
 }
 
