@@ -36,6 +36,6 @@ account.patch(
   changePassword
 );
 
-account.delete("/", hashPassword, verifyCredentials, removeAccount);
+account.delete("/", verifyCredentials, removeAccount);
 
 export { account };

@@ -7,10 +7,10 @@ export async function removeAccount(
   res: Response,
   next: NextFunction
 ) {
-  const { username, password } = req.body as AccountBody;
+  const { username } = req.body as AccountBody;
 
   try {
-    await deleteAccount(username, password);
+    await deleteAccount(username);
     
     res.clearCookie("token");
     res.clearCookie("refreshToken");
