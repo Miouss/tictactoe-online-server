@@ -25,7 +25,7 @@ export const io = new Server(httpServer, {
 
 export async function startServer(): Promise<number> {
   app.use(cors(corsOptions));
-  
+
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
   app.use(cookieParser());
@@ -41,6 +41,7 @@ export async function startServer(): Promise<number> {
 }
 
 function handleError(err: any, _: Request, res: Response, next: NextFunction) {
+  console.error(err);
   res.status(err.status || 500);
   res.json({ message: err.message });
 }
