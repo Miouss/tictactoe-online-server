@@ -1,0 +1,11 @@
+@content = application/json
+@username = Miouss
+@password = c
+
+POST http://localhost:3001/api/login HTTP/1.1
+content-type: {{content}}
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}

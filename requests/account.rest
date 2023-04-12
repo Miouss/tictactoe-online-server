@@ -1,0 +1,39 @@
+@content = application/json
+@username = Miouss
+@password = c
+@email = test@gmail.com
+@newPassword = password_changed
+
+### Create account
+POST http://localhost:3001/api/account HTTP/1.1
+content-type: {{content}}
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}",
+    "email": "{{email}}"
+}
+
+### Confirm account
+PATCH http://localhost:3001/api/account?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbWlyIiwiaWF0IjoxNjgwOTAxOTg3LCJleHAiOjE2ODA5MDI1ODd9.1Hd_MlnLDW82K2GnxqIBC24FItNkcEwOI_bxZPMtWL8
+
+### Change password
+PATCH http://localhost:3001/api/account/password HTTP/1.1
+content-type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}",
+    "newPassword": "{{newPassword}}"
+}
+
+
+### Delete account
+DELETE http://localhost:3001/api/account HTTP/1.1
+content-type: application/json
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
