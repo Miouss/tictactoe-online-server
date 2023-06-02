@@ -4,3 +4,4 @@ export * from "./addAccount";
 export * from "./removeAccount";
 export * from "./changePassword";
 export * from "./reassignPassword";
+export * from "./sendMailConfirmation";

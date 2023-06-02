@@ -6,6 +6,7 @@ import {
   removeAccount,
   changePassword,
   reassignPassword,
+  sendMailConfirmation,
 } from "./middlewares";
 import {
   verifyJWT,
@@ -23,10 +24,11 @@ account.post(
   hashPassword,
   addAccount,
   createJWT,
+  sendMailConfirmation,
   sendJWT
 );
 
-account.patch("/", verifyJWT, confirmAccount);
+account.get("/", verifyJWT, confirmAccount);
 
 account.patch(
   "/password",

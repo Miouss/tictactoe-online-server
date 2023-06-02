@@ -15,7 +15,7 @@ content-type: {{content}}
 }
 
 ### Confirm account
-PATCH http://localhost:3001/api/account?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbWlyIiwiaWF0IjoxNjgwOTAxOTg3LCJleHAiOjE2ODA5MDI1ODd9.1Hd_MlnLDW82K2GnxqIBC24FItNkcEwOI_bxZPMtWL8
+GET http://localhost:3001/api/account?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ik1pb3VzcyIsImlhdCI6MTY4NTYxNDA1NywiZXhwIjoxNjg1NjE0NjU3fQ.L1c8ubOuucpQDB1Cpqbsia5wbMxZIJ-LkI75zyKM2AA
 
 ### Change password
 PATCH http://localhost:3001/api/account/password HTTP/1.1
