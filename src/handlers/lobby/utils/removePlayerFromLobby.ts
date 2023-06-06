@@ -4,9 +4,13 @@ import { Player } from "@types";
 
 export async function removePlayerFromLobby(currentPlayer: Player) {
   const filter = {
-    players: { $elemMatch: currentPlayer },
+    players: {
+      $elemMatch: {
+        name: currentPlayer.name,
+      },
+    },
   };
-  const update = { $pull: { players: currentPlayer } };
+  const update = { $pull: { players: { name: currentPlayer.name } } };
   const options = { new: true };
 
   const lobby = await Lobby.findOneAndUpdate(filter, update, options);
