@@ -16,12 +16,12 @@ export async function confirmAccount(
 
     if (account.isConfirmed) {
       statusCode = 409;
-      message = "Account already confirmed";
+      message = `Account '${username}' already confirmed`;
     } else {
       account.isConfirmed = true;
       await account.save();
       statusCode = 200;
-      message = "Account confirmed";
+      message = `Account '${username}' confirmed`;
     }
 
     res.status(statusCode).json({ message });

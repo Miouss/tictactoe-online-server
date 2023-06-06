@@ -9,6 +9,7 @@ export async function checkAccountDoublon(
   next: NextFunction
 ) {
   const { username } = req.body as AccountBody;
+
   try {
     const isAccountExists = await findAccountByUsername(username);
 

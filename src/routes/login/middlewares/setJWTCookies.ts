@@ -1,19 +1,20 @@
 import { NextFunction, Response } from "express";
 import { TokenRequest } from "@types";
+import { NODE_ENV } from "@config";
+import { TokenMissingError } from "@classes";
 
 export function setJWTCookies(
   req: TokenRequest,
   res: Response,
   next: NextFunction
 ) {
-  const { token, refreshToken } = req;
+  const { token, refreshedToken } = req;
 
-  const isTokenMissing = !token || !refreshToken;
+  const isTokenMissing = !token || !refreshedToken;
 
-  if (isTokenMissing)
-    return next(new Error("Token or refreshToken is missing"));
+  if (isTokenMissing) return next(new TokenMissingError());
 
-  const isProductionEnv = process.env.NODE_ENV === "production";
+  const isProductionEnv = NODE_ENV === "production";
 
   const getCookieOptions = (maxAge: number) => ({
     httpOnly: true,
@@ -23,7 +24,7 @@ export function setJWTCookies(
 
   res.cookie(
     "refreshToken",
-    refreshToken,
+    refreshedToken,
     getCookieOptions(24 * 60 * 60 * 1000)
   );
 

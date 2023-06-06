@@ -1,6 +1,8 @@
 import { Response, NextFunction } from "express";
-import { TokenRequest } from "@types";
 import nodemailer from "nodemailer";
+import { TokenRequest } from "@types";
+import { SendingMailError } from "@classes";
+import { CLIENT_URL, SMTP_PASSWORD, SMTP_USER } from "@config";
 
 export async function sendMailConfirmation(
   req: TokenRequest,
@@ -9,7 +11,6 @@ export async function sendMailConfirmation(
 ) {
   const { token } = req;
   const { email } = req.body;
-  const { SMTP_USER, SMTP_PASSWORD } = process.env;
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -24,13 +25,13 @@ export async function sendMailConfirmation(
     from: SMTP_USER,
     to: email,
     subject: "Please confirm your account",
-    text: `Click on the link to confirm your account: http://localhost:3001/api/account?token=${token}`,
+    text: `Click on the link to confirm your account: ${CLIENT_URL}/signup?token=${token}`,
   };
 
   try {
     await transporter.sendMail(mailOptions);
     next();
   } catch (err) {
-    next(err);
+    next(new SendingMailError());
   }
 }

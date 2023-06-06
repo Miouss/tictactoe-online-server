@@ -9,13 +9,12 @@ import { Player } from "@types";
 import { account, login } from "@routes";
 import { wait } from "@utils";
 
-import { config } from "dotenv";
-config();
+import { CLIENT_URL, PORT } from "@config";
 
 const app = express();
 const httpServer = createServer(app);
 const corsOptions = {
-  origin: process.env.URL_ORIGIN,
+  origin: CLIENT_URL,
   credentials: true,
 };
 
@@ -48,7 +47,7 @@ function handleError(err: any, _: Request, res: Response, next: NextFunction) {
 
 export function initializeServer() {
   return new Promise((resolve, reject) => {
-    let currentPort = process.env.PORT as unknown as number;
+    let currentPort = PORT as unknown as number;
 
     httpServer.listen(currentPort);
 

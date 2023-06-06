@@ -1,7 +1,7 @@
 import { decodeJWT, getJWT } from "../";
+import { REFRESH_JWT_SECRET } from "@config";
 
 export function refreshJWT(refreshToken: string) {
-  const { REFRESH_JWT_SECRET } = process.env;
 
   const decodedRefreshToken = decodeJWT(
     refreshToken as string,

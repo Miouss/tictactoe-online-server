@@ -28,7 +28,7 @@ account.post(
   sendJWT
 );
 
-account.get("/", verifyJWT, confirmAccount);
+account.put("/", verifyJWT, confirmAccount);
 
 account.patch(
   "/password",

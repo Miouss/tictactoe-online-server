@@ -13,7 +13,8 @@ export async function changePassword(
     account.password = password;
     await account.save();
 
-    res.status(200).json({ message: "Password changed" });
+    const message = `Password for account '${username}' changed`;
+    res.status(200).json({ message });
   } catch (err) {
     next(err);
   }

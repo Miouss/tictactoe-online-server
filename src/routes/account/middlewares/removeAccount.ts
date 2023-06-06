@@ -11,10 +11,10 @@ export async function removeAccount(
 
   try {
     await deleteAccount(username);
-    
+
     res.clearCookie("token");
     res.clearCookie("refreshToken");
-    res.status(200).json({ message: "Account deleted" });
+    res.status(200).json({ message: `Account '${username}' deleted` });
   } catch (err) {
     next(err);
   }

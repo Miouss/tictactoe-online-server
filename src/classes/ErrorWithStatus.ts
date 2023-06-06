@@ -42,3 +42,21 @@ export class TokenInvalidError extends ErrorWithStatus {
     super(403, "Token invalid");
   }
 }
+
+export class TokenMissingError extends ErrorWithStatus {
+  constructor() {
+    super(403, "Token is missing");
+  }
+}
+
+export class HashingPasswordError extends ErrorWithStatus {
+  constructor() {
+    super(500, "Error hashing password");
+  }
+}
+
+export class SendingMailError extends ErrorWithStatus {
+  constructor() {
+    super(500, "Error sending mail");
+  }
+}

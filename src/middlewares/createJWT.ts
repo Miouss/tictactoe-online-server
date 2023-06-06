@@ -9,10 +9,10 @@ export function createJWT(
 ) {
   const { username } = req.body as AccountBody;
 
-  const { token, refreshToken } = getJWT(username);
+  const { token, refreshedToken } = getJWT(username);
 
   req.token = token;
-  req.refreshToken = refreshToken;
+  req.refreshedToken = refreshedToken;
 
   next();
 }
