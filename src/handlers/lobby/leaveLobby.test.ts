@@ -16,7 +16,7 @@ describe("leaveLobby", () => {
   });
 
   afterAll(async () => {
-    await stopServer();
+    stopServer();
   });
 
   it("should emit 'playerLeft' to the leaving player", async () => {

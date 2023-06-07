@@ -86,6 +86,6 @@ function getSocketConnection(port: number): Promise<Socket> {
   });
 }
 
-export async function stopServer() {
+export function stopServer() {
   io.close();
 }

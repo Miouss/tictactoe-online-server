@@ -15,7 +15,7 @@ describe("joinLobby", () => {
   });
 
   afterAll(async () => {
-    await stopServer();
+    stopServer();
   });
 
   it("should emit 'lobbyFull' to the joining player if the lobby joining is full", async () => {
@@ -72,9 +72,9 @@ describe("joinLobby", () => {
     const lobby = mockLobby(players[0]);
 
     mockLobbyFindByIdReturnValue(lobby);
-    
+
     io.to(sockets[0].id).socketsJoin(lobby._id);
-    
+
     const hasSignalEmittedToAllPlayers = await resolveWhenSignalEmitted(
       () => joinLobby(joiningPlayer, lobby._id),
       [socket, sockets[0]],

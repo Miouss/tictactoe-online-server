@@ -15,7 +15,7 @@ describe("createLobby", () => {
   });
 
   afterAll(async () => {
-    await stopServer();
+    stopServer();
   });
 
   it("should emit 'lobbyCreated' to the player after the lobby was created", async () => {

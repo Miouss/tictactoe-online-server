@@ -16,7 +16,7 @@ describe("declareWinner", () => {
   });
 
   afterAll(async () => {
-    await stopServer();
+    stopServer();
   });
 
   let action, signal, expectedArgs;

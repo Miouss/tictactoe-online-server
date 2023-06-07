@@ -15,7 +15,7 @@ describe("makeMove", () => {
   });
 
   afterAll(async () => {
-    await stopServer();
+    stopServer();
   });
 
   it("should emit 'moveMade' event to the player and opponent", async () => {
