@@ -2,11 +2,12 @@ import { declareWinner } from "./declareWinner";
 import { makeMove } from "./makeMove";
 import { replayGame } from "./replayGame";
 import { io } from "@server";
+import { GAME } from "signals";
 
 export function handleGame() {
   io.on("connection", (socket) => {
-    socket.on("makeMove", makeMove);
-    socket.on("gameWin", declareWinner);
-    socket.on("replayGame", replayGame);
+    socket.on(GAME.MAKE_MOVE, makeMove);
+    socket.on(GAME.WIN, declareWinner);
+    socket.on(GAME.REPLAY, replayGame);
   });
 }

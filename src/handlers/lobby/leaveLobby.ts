@@ -1,6 +1,7 @@
 import { io } from "@server";
 import { Player } from "@types";
 import { removePlayerFromLobby } from "./utils";
+import { PLAYER } from "signals";
 
 export async function leaveLobby(leavingPlayer: Player) {
   try {
@@ -13,10 +14,10 @@ export async function leaveLobby(leavingPlayer: Player) {
       console.log(`Lobby deleted with last player: ${leavingPlayer.name}`);
     } else {
       const opponent = lobby.players[0];
-      io.in(lobbyId).emit("opponentLeft", opponent);
+      io.in(lobbyId).emit(PLAYER.OPPONENT_LEFT, opponent);
     }
 
-    io.to(leavingPlayer.id).emit("playerLeft");
+    io.to(leavingPlayer.id).emit(PLAYER.LEFT);
   } catch (err) {
     console.error(err);
   }
