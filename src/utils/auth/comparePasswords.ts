@@ -1,5 +1,7 @@
+import { PasswordIncorrectError } from "@classes";
 import bcrypt from "bcrypt";
 
 export function comparePasswords(password: string, hashedPassword: string) {
-  return bcrypt.compare(password, hashedPassword);
+  const isPasswordMatch = bcrypt.compare(password, hashedPassword);
+  if (!isPasswordMatch) throw new PasswordIncorrectError();
 }

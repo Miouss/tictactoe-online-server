@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { comparePasswords, getAccount } from "@utils";
 import { AccountBody } from "@types";
-import { AccountNotFoundError, PasswordIncorrectError } from "@classes";
 
 export async function verifyCredentials(
   req: Request,
@@ -12,10 +11,8 @@ export async function verifyCredentials(
 
   try {
     const account = await getAccount(username);
-    if (!account) throw new AccountNotFoundError();
 
-    const isPasswordMatch = await comparePasswords(password, account.password);
-    if (!isPasswordMatch) throw new PasswordIncorrectError();
+    comparePasswords(password, account.password);
 
     next();
   } catch (err) {

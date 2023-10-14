@@ -1,6 +1,7 @@
 import { Lobby } from "@database";
 import { io } from "@server";
 import { Player } from "@types";
+import { LOBBY } from "signals";
 
 export async function createLobby(player: Player) {
   try {
@@ -10,7 +11,7 @@ export async function createLobby(player: Player) {
     const lobbyId = _id.toString();
 
     io.to(player.id).socketsJoin(lobbyId);
-    io.in(lobbyId).emit("lobbyCreated", player, lobbyId);
+    io.in(lobbyId).emit(LOBBY.CREATED, player, lobbyId);
   } catch (e) {
     console.error(e);
   }

@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
-import { Player, LobbyDoc } from "@types";
+import { Player } from "@types";
+
+interface LobbyDoc extends mongoose.Document {
+  players: Player[];
+}
 
 const player = new mongoose.Schema<Player>({
   name: String,

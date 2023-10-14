@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { findAccountByUsername } from "@utils";
 import { AccountBody } from "@types";
-import { AccountAlreadyExistsError } from "@classes";
 
 export async function checkAccountDoublon(
   req: Request,
@@ -11,9 +10,7 @@ export async function checkAccountDoublon(
   const { username } = req.body as AccountBody;
 
   try {
-    const isAccountExists = await findAccountByUsername(username);
-
-    if (isAccountExists) throw new AccountAlreadyExistsError();
+    await findAccountByUsername(username);
 
     next();
   } catch (err) {

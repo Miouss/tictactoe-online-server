@@ -17,10 +17,6 @@ const account = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
-  friends: {
-    type: [mongoose.SchemaTypes.ObjectId],
-    required: false,
-  },
 });
 
 export const Account = mongoose.model("Account", account);
