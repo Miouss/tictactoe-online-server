@@ -12,8 +12,8 @@ export async function verifyCredentials(
   try {
     const account = await getAccount(username);
 
-    comparePasswords(password, account.password);
-
+    await comparePasswords(password, account.password);
+    console.log("passwords match");
     next();
   } catch (err) {
     next(err);
