@@ -1,7 +1,7 @@
 import { findLobbyById, getPlayerNotMatching } from "./utils";
 import { io } from "@server";
 import { Player } from "@types";
-import { GAME } from "signals";
+import { GAME } from "@signals";
 
 export async function replayGame(socketId: string) {
   try {

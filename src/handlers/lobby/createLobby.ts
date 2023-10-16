@@ -1,7 +1,7 @@
 import { Lobby } from "@database";
 import { io } from "@server";
 import { Player } from "@types";
-import { LOBBY } from "signals";
+import { LOBBY } from "@signals";
 
 export async function createLobby(player: Player) {
   try {

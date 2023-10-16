@@ -2,7 +2,7 @@ import { io } from "@server";
 import { createLobby } from "./createLobby";
 import { joinLobby } from "./joinLobby";
 import { leaveLobby } from "./leaveLobby";
-import { LOBBY } from "signals";
+import { LOBBY } from "@signals";
 
 export function handleLobby() {
   io.on("connection", (socket) => {

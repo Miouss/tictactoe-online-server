@@ -3,7 +3,7 @@ import { io } from "@server";
 import { Player } from "@types";
 import { getPlayerBy } from "./utils";
 
-import { LOBBY, PLAYER } from "signals";
+import { LOBBY, PLAYER } from "@signals";
 
 export async function joinLobby(joiningPlayer: Player, lobbyId: string) {
   try {

@@ -1,6 +1,6 @@
 import { MovePosition } from "@types";
 import { io } from "@server";
-import { GAME } from "signals";
+import { GAME } from "@signals";
 import { findLobbyById } from "./utils";
 
 export async function makeMove(

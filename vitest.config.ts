@@ -14,6 +14,7 @@ export default defineConfig({
       "@routes": path.resolve(__dirname, "src/routes"),
       "@classes": path.resolve(__dirname, "src/classes"),
       "@config": path.resolve(__dirname, "src/config"),
+      "@signals": path.resolve(__dirname, "src"),
     },
   },
 });

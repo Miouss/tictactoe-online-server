@@ -1,7 +1,7 @@
 import { io } from "@server";
 import { Player } from "@types";
 import { removePlayerFromLobby } from "./utils";
-import { PLAYER } from "signals";
+import { PLAYER } from "@signals";
 
 export async function leaveLobby(leavingPlayer: Player) {
   try {
