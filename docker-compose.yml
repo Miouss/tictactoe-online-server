@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  web:
+    image: ghcr.io/miouss/tictactoe-server:latest
+    container_name: tictactoe_server
+    ports:
+      - 3001:3001
+    restart: unless-stopped
+    environment:
+      NODE_ENV : production

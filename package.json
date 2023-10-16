@@ -4,8 +4,12 @@
   "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && nodemon",
-    "test": "vitest run"
+    "start": "node -r tsconfig-paths/register -r ts-node/register ./src/index.ts",
+    "dev": "tsc && nodemon",
+    "test": "vitest run",
+    "dockstart": "docker compose -f docker-compose.yml up -d",
+    "dockbuild": "docker build -t ghcr.io/miouss/tictactoe-server . -f Dockerfile",
+    "dockpush": "docker push ghcr.io/miouss/tictactoe-server:latest"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
